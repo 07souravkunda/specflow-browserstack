@@ -19,7 +19,7 @@ namespace SpecFlowBasics.StepDefinitions
 		private string? productOnCartText;
 		private bool? cartOpened;
 		readonly WebDriverWait wait;
-			public SampleTest(RemoteWebDriver driver)
+			public SampleTest()
 			{
 				_driver = BrowserStackSpecFlowTest.ThreadLocalDriver.Value;
 				wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));

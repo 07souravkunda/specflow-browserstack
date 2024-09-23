@@ -2,9 +2,9 @@
 using TechTalk.SpecFlow;
 using log4net;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Chrome;
 using System.Threading;
+using OpenQA.Selenium.Remote;
 
 namespace SpecFlowBrowserStack
 {
