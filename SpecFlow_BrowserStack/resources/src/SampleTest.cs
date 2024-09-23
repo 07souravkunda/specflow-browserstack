@@ -1,24 +1,22 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using SpecFlowBrowserStack;
 using TechTalk.SpecFlow;
+using Xunit;
 
 
 
 namespace SpecFlowBasics.StepDefinitions
 {
     [Binding]
-
     public class SampleTest
     {
-        private readonly IWebDriver _driver;
-		private string? productOnPageText;
-		private string? productOnCartText;
-		private bool? cartOpened;
-		readonly WebDriverWait wait;
+			private readonly IWebDriver _driver;
+			private string? productOnPageText;
+			private string? productOnCartText;
+			private bool? cartOpened;
+			readonly WebDriverWait wait;
 			public SampleTest()
 			{
 				_driver = BrowserStackSpecFlowTest.ThreadLocalDriver.Value;
@@ -35,7 +33,7 @@ namespace SpecFlowBasics.StepDefinitions
 			public void ThenIShouldSeeTitle(string title)
 			{
 				Thread.Sleep(5000);
-				Assert.IsTrue(_driver.Title.Equals(title));
+				Assert.True(_driver.Title.Equals(title));
 			}
 			
 			[Then(@"I add product to cart")]
@@ -51,15 +49,14 @@ namespace SpecFlowBasics.StepDefinitions
 			public void ThenICheckIfCartIsOpened()
 			{
 				cartOpened = _driver.FindElement(By.XPath("//*[@class=\"float-cart__content\"]")).Displayed;
-				Assert.IsTrue(cartOpened);
+				Assert.True(cartOpened);
 			}
 
 			[Then(@"I should see same product in cart")]
 			public void ThenIShouldSeeSameProductInCart()
 			{
 				productOnCartText = _driver.FindElement(By.XPath("//*[@id=\"__next\"]/div/div/div[2]/div[2]/div[2]/div/div[3]/p[1]")).Text;
-				Assert.IsTrue(productOnCartText.Equals(productOnPageText));
+				Assert.True(productOnCartText.Equals(productOnPageText));
 			}
-
     }
 }
